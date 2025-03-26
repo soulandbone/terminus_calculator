@@ -14,6 +14,11 @@ class GradientWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(colors: [color1, color2]),
+      ),
+      child: child,
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ResultItem extends StatefulWidget {
   const ResultItem(this.number, {super.key});
@@ -14,11 +15,17 @@ class _ResultItemState extends State<ResultItem> {
     return Container(
       width: 75,
       height: 75,
-      decoration: BoxDecoration(border: Border.all(color: Colors.red)),
+      decoration: BoxDecoration(border: Border.all(color: Colors.lightBlue)),
       child: Center(
         child: Text(
           (widget.number).toString(),
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+          style: GoogleFonts.bungee(
+            textStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 42,
+              color: Colors.white,
+            ),
+          ),
         ),
       ),
     );

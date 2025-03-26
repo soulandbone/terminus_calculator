@@ -24,8 +24,10 @@ class SymbolsRowItem extends StatelessWidget {
         onUpdateHighlight(index);
       },
       child: Container(
+        width: 40,
+        height: 40,
         decoration: BoxDecoration(
-          border: isSelected ? Border.all(color: Colors.red, width: 1) : null,
+          border: isSelected ? Border.all(color: Colors.green, width: 4) : null,
         ),
         child: CircleAvatar(
           backgroundImage: AssetImage('assets/images/symbol_${index + 1}.png'),

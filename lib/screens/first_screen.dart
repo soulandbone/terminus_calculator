@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:terminus_app/widgets/gradient_wrapper.dart';
 import 'package:terminus_app/widgets/result_box.dart';
 import 'package:terminus_app/widgets/symbols_row.dart';
 
@@ -49,7 +50,15 @@ class _FirstScreenState extends State<FirstScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Terminus Calculator')),
+      backgroundColor: Colors.black54,
+      appBar: AppBar(
+        title: Text('Terminus Calculator'),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [Colors.blue, Colors.blueAccent]),
+          ),
+        ),
+      ),
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 12),
@@ -59,7 +68,7 @@ class _FirstScreenState extends State<FirstScreen> {
               SymbolsRow(letter: 'X', onSelectIcon: onSelectIcon),
               SymbolsRow(letter: 'Y', onSelectIcon: onSelectIcon),
               SymbolsRow(letter: 'Z', onSelectIcon: onSelectIcon),
-              SizedBox(height: 75),
+              const SizedBox(height: 75),
               ResultBox(onCalculate: makeCalculation),
             ],
           ),

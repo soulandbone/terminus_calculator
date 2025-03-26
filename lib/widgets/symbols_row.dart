@@ -32,7 +32,11 @@ class _SymbolsRowState extends State<SymbolsRow> {
       children: [
         Text(
           widget.letter,
-          style: TextStyle(fontSize: 38, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+            fontSize: 38,
+            fontWeight: FontWeight.bold,
+            color: Colors.amber,
+          ),
         ),
 
         for (int index = 0; index <= 5; index++)
