@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
 
 class SymbolsRowItem extends StatelessWidget {
-  const SymbolsRowItem(
-    this.onSelectIcon, {
-    required this.selectedIndex,
+  const SymbolsRowItem({
+    required this.isSelected,
+    required this.letter,
+    required this.onSelect,
     required this.index,
-    required this.isSelectedCallBack,
+    required this.onUpdateHighlight,
     super.key,
   });
 
+  final bool isSelected;
   final int index;
-  final int selectedIndex;
-  final Function(int index) onSelectIcon;
-  final Function(int index) isSelectedCallBack;
+  final String letter;
+  final Function(int index, String letter) onSelect;
+  final Function(int index) onUpdateHighlight;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        onSelectIcon(index);
-        isSelectedCallBack(index);
+        onSelect(index, letter);
+        onUpdateHighlight(index);
       },
       child: Container(
         decoration: BoxDecoration(
-          border:
-              selectedIndex == index
-                  ? Border.all(color: Colors.red, width: 1)
-                  : null,
+          border: isSelected ? Border.all(color: Colors.red, width: 1) : null,
         ),
         child: CircleAvatar(
           backgroundImage: AssetImage('assets/images/symbol_${index + 1}.png'),
