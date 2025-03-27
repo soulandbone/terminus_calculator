@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:terminus_app/providers/calculations_provider.dart';
+import 'package:terminus_app/providers/index_provider.dart';
 
 class SymbolsRowItem extends ConsumerWidget {
   const SymbolsRowItem({required this.letter, required this.index, super.key});
@@ -23,7 +23,12 @@ class SymbolsRowItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final List<int> selectedIndex = ref.watch(selectedIndexProvider)['index']!;
+    final indexesList = ref.watch(
+      selectedIndexProvider,
+    ); // watches the list of index.
+    final selectedIndex =
+        indexesList[getIndex]; // Because the list holds on the index [0],[1] and [2] the values of X, Y and Z respectively, we want the letter in which we actively are
+
     return InkWell(
       onTap: () {
         ref.read(selectedIndexProvider.notifier).updateIndex(index, letter);
@@ -33,7 +38,8 @@ class SymbolsRowItem extends ConsumerWidget {
         height: 40,
         decoration: BoxDecoration(
           border:
-              index == selectedIndex[getIndex]
+              index ==
+                      selectedIndex // if the current index, is the same as the selectedIndex in the state, then this is the one that is actually active and should be highlighted
                   ? Border.all(color: Colors.green, width: 4)
                   : null,
         ),
