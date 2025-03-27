@@ -2,28 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:terminus_app/widgets/symbols_row_item.dart';
 
-class SymbolsRow extends StatefulWidget {
-  const SymbolsRow({
-    required this.letter,
-    required this.onSelectIcon,
-    super.key,
-  });
+class SymbolsRow extends StatelessWidget {
+  const SymbolsRow({required this.letter, super.key});
 
   final String letter;
-  final Function(int index, String letter) onSelectIcon;
-
-  @override
-  State<SymbolsRow> createState() => _SymbolsRowState();
-}
-
-class _SymbolsRowState extends State<SymbolsRow> {
-  var selectedIndex = -1;
-
-  void updateHighlight(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +13,7 @@ class _SymbolsRowState extends State<SymbolsRow> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          widget.letter,
+          letter,
           style: const TextStyle(
             fontSize: 38,
             fontWeight: FontWeight.bold,
@@ -40,13 +22,7 @@ class _SymbolsRowState extends State<SymbolsRow> {
         ),
 
         for (int index = 0; index <= 5; index++)
-          SymbolsRowItem(
-            isSelected: index == selectedIndex,
-            onUpdateHighlight: updateHighlight,
-            letter: widget.letter,
-            onSelect: widget.onSelectIcon,
-            index: index,
-          ),
+          SymbolsRowItem(letter: letter, index: index),
       ],
     );
   }

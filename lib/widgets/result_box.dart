@@ -1,30 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:terminus_app/providers/calculations_provider.dart';
 import 'package:terminus_app/widgets/result_item.dart';
 
-class ResultBox extends StatefulWidget {
-  const ResultBox({required this.onCalculate, super.key});
-
-  final Function(int number) onCalculate;
+class ResultBox extends ConsumerWidget {
+  const ResultBox({super.key});
 
   @override
-  State<ResultBox> createState() => ResultBoxState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    var provider1 = ref.watch(selectedIndexProvider);
 
-class ResultBoxState extends State<ResultBox> {
-  // int selectedX = 0;
-  //int selectedY = 0;
-  //int selectedZ = 0;
-
-  // List<int> values = [0, 10, 11, 20, 21, 22]; in Theory not needed.
-
-  @override
-  Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        ResultItem(widget.onCalculate(1)),
-        ResultItem(widget.onCalculate(2)),
-        ResultItem(widget.onCalculate(3)),
+        ResultItem(provider1['coordinates']![0]),
+        ResultItem(provider1['coordinates']![1]),
+        ResultItem(provider1['coordinates']![2]),
       ],
     );
   }
