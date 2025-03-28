@@ -15,9 +15,15 @@ class ResultBox extends ConsumerWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          ResultItem(provider[0]),
-          ResultItem(provider[1]),
-          ResultItem(provider[2]),
+          ResultItem(
+            provider[0],
+          ), //first index of the state, representing the first calculated coordinate (that depends on the index State of x ) 2x+11
+          ResultItem(
+            provider[1],
+          ), //  //second index of the state, representing the second calculated coordinate (that depends on the index State of z and y) 2z+y -5
+          ResultItem(
+            provider[2],
+          ), // third index of the state, representing the third calculated coordinate (that depends on the index State of z, y and x) |y+z -x|
         ],
       ),
     );
